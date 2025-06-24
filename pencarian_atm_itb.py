@@ -101,6 +101,15 @@ graph = {
     "ATM BCA": [],
     "SARAGA": []
 }
+def make_bidirectional(graph):
+    bidir_graph = {}
+    for node in graph:
+        for neighbor in graph[node]:
+            bidir_graph.setdefault(node, []).append(neighbor)
+            bidir_graph.setdefault(neighbor, []).append(node)
+    return bidir_graph
+
+graph = make_bidirectional(graph)
 
 # ======================= ATM NODES =======================
 atm_nodes_by_bank = {
